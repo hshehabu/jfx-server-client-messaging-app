@@ -35,6 +35,7 @@ public class Controller implements Initializable{
 	VBox vbox_field;
 	
 	private Server server;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -73,7 +74,7 @@ public class Controller implements Initializable{
 					hbox.getChildren().add(textFlow);
 					vbox_field.getChildren().add(hbox);
 					
-//					server.setMessageToClient(message);
+					server.sendMessageToClient(message);
 					msg_field.clear();
 				}
 				

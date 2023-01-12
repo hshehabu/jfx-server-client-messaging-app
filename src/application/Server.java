@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -23,9 +25,11 @@ public class Server {
 			this.serverSocket = serverSocket;
 			this.socket = serverSocket.accept();
 			this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 		} catch (IOException e) {
 			System.out.println("Error while creating server");
 			e.printStackTrace();
+			resourceSaver(socket , bufferedReader , bufferedWriter);
 		}
 		
 		
